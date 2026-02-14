@@ -1,0 +1,127 @@
+:root {
+    --bg: #000000;
+    --surface: #0b0b0b;
+    --border: rgba(255,255,255,0.08);
+    --accent: #4c82ff;
+    --text: #ffffff;
+    --text-dim: #888888;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Back Link */
+.back-link {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 100;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+/* Hero */
+.hero {
+    padding: 140px 6vw 80px;
+    background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    margin-top: 15px;
+    color: var(--text-dim);
+    font-size: 18px;
+}
+
+/* Projects Grid */
+.projects-grid {
+    padding: 0 6vw 140px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+/* Project Card */
+.project-card {
+    background: linear-gradient(145deg, #0b0b0b, #0e0e0e);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Ambient Accent Glow Layer */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(76,130,255,0.08), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.25);
+    box-shadow: 
+        0 20px 60px rgba(0,0,0,0.6),
+        0 0 40px rgba(76,130,255,0.15);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card i {
+    color: var(--accent);
+    margin-bottom: 25px;
+}
+
+.project-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 20px;
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 120px 5vw 60px;
+    }
+}
